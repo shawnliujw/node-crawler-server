@@ -1,7 +1,7 @@
 {
   "name": "casper-crawler",
   "description": "casperjs server for scraping, with it you can simple write the script file , it can be executed in the browser and response you the result you expect",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./app.js",
   "author": {
     "name": "shawn",
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com//casper-crawler.git"
+    "url": "git@github.com:shawnLiujianwei/casper-crawler.git"
   },
   "bugs": {
-    "url": "http://github.com//casper-crawler/issues"
+    "url": "https://github.com/shawnLiujianwei/casper-crawler/issues"
   },
   "dependencies": {
     "async": "^0.9.0",
