@@ -1,12 +1,10 @@
-/* jshint expr: true */
+var path = require("path");
+process.env.NODE_CONFIG_DIR = path.join(__dirname, "../config");
 var expect = require("chai").expect;
-var clearCache = require('../main').clearCache;
-var scraper = require("../main").scrape;
+var casperServer = require("../main");
 var config = require("config");
 var Promise = require('bluebird');
-var path = require("path");
 var db = require('mongo-bluebird').create(config.scrapecache.db);
-var casperServer = require("../lib/server");
 describe('clearCache', function() {
 	var stubs;
 	var detailsCol = db.collection('test1');
@@ -34,7 +32,7 @@ describe('clearCache', function() {
 				script: 'script3'
 			}])
 				.then(function() {
-					return clearCache('test1', ['url1']);
+					return casperServer.clearCache('test1', ['url1']);
 				}).then(function() {
 			return detailsCol.find({})
 					.then(function(details) {
@@ -56,7 +54,7 @@ describe('clearCache', function() {
 				script: 'script3'
 			}])
 				.then(function() {
-					return clearCache('test2', ['url1']);
+					return casperServer.clearCache('test2', ['url1']);
 				}).then(function() {
 			return linksCol.find()
 					.then(function(details) {
@@ -72,27 +70,26 @@ describe("scrape information", function() {
 	var searchUrl = "http://www.superdrug.com/search?q=oil&searchsubmit=Search&setpagenum=1&perpage=24";
 	var scriptFile = path.join(__dirname, "./superdrug.com.js");
 
-	var detailsCol = db.collection('details');
-	var linksCol = db.collection('links');
+//	var detailsCol = db.collection('details');
+//	var linksCol = db.collection('links');
 
-	beforeEach(function() {
-
+	after(function() {
+		casperServer.clearCache('details', [productUrl]);
+		casperServer.clearCache('search', [searchUrl]);
 	});
-
-	afterEach(function() {
-		clearCache('details', [productUrl]);
-		clearCache('search', [searchUrl]);
-		casperServer.release(config.casper.ports);
-	});
-	it("scrape product details", function(done) {
+	it.only("scrape product details", function(done) {
 		var page = {
 			"url": productUrl,
 			"script": scriptFile
 		};
-		scraper(page, "details", 0)
+		casperServer.scrape(page, "details", 0)
 				.then(function(res) {
-					console.log(res);
-					done();
-				})
+					expect(res).to.have.property("results");
+					expect(res.results).to.have.length(1);
+				}).then(function() {
+					//return detailsCol.find({url: {$in: [productUrl]}});
+				}).then(function(res) {
+					//expect(res).to.have.length(1);
+				}).then(done, done);
 	});
 });
