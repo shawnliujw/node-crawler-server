@@ -1,15 +1,15 @@
 {
   "name": "casper-crawler",
-  "description": "",
-  "version": "0.0.1",
+  "description": "casperjs server for scraping, with it you can simple write the script file , it can be executed in the browser and response you the result you expect",
+  "version": "0.0.2",
   "main": "./app.js",
   "author": {
     "name": "shawn",
     "email": "shawn.liu@dotter.me"
   },
-  "keywords": [],
+  "keywords": ["casperjs","phantomjs","crawler","mongo","job queue"],
   "licenses": {
-    "type": "none"
+    "type": "MIT"
   },
   "repository": {
     "type": "git",
