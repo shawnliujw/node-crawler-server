@@ -1,0 +1,35 @@
+{
+  "name": "casper-crawler",
+  "description": "",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "author": {
+    "name": "shawn",
+    "email": "shawn.liu@dotter.me"
+  },
+  "keywords": [],
+  "licenses": {
+    "type": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com//casper-crawler.git"
+  },
+  "bugs": {
+    "url": "http://github.com//casper-crawler/issues"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "bluebird": "^2.3.2",
+    "config": "^1.2.0",
+    "cron": "^1.0.4",
+    "log4js": "^0.6.21",
+    "mongo-bluebird": "0.0.4",
+    "request": "^2.44.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3"
+  }
+}
