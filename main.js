@@ -65,6 +65,9 @@ Server.prototype.scrape = function(pages, type, expiration) {
 Server.prototype.clearCache = function(type,urls) {
 	return db.collection(type).remove({url: {$in: urls}});
 };
+Server.prototype.release = function(){
+	casper.releaseAll();
+};
 module.exports = new Server();
 
 

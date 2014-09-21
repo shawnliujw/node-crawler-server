@@ -70,12 +70,13 @@ describe("scrape information", function() {
 	var searchUrl = "http://www.superdrug.com/search?q=oil&searchsubmit=Search&setpagenum=1&perpage=24";
 	var scriptFile = path.join(__dirname, "./superdrug.com.js");
 
-//	var detailsCol = db.collection('details');
-//	var linksCol = db.collection('links');
+	var detailsCol = db.collection('details');
+	var linksCol = db.collection('links');
 
 	after(function() {
 		casperServer.clearCache('details', [productUrl]);
 		casperServer.clearCache('search', [searchUrl]);
+		casperServer.release();
 	});
 	it.only("scrape product details", function(done) {
 		var page = {
@@ -84,12 +85,13 @@ describe("scrape information", function() {
 		};
 		casperServer.scrape(page, "details", 0)
 				.then(function(res) {
+					console.log(res);
 					expect(res).to.have.property("results");
 					expect(res.results).to.have.length(1);
 				}).then(function() {
-					//return detailsCol.find({url: {$in: [productUrl]}});
+					return detailsCol.find({url: {$in: [productUrl]}});
 				}).then(function(res) {
-					//expect(res).to.have.length(1);
+					expect(res).to.have.length(1);
 				}).then(done, done);
 	});
 });
