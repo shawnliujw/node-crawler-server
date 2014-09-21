@@ -1,7 +1,7 @@
 {
   "name": "casper-crawler",
   "description": "casperjs server for scraping, with it you can simple write the script file , it can be executed in the browser and response you the result you expect",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./app.js",
   "author": {
     "name": "shawn",
