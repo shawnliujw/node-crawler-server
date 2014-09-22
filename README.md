@@ -1,11 +1,12 @@
 casper-crawler
 =====================
 
-Web crawler base casperjs and phantomjs , with job queue
+Web crawler base casperjs and phantomjs , with job queue. it can
+load ajax content and work as you are using browser.
 
 
 
-##How to install
+##How to installs
 npm install casper-crawler
 
 
