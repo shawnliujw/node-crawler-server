@@ -1,13 +1,26 @@
+'use strict';
 var jobqueue = require("./lib/jobqueue");
 var logger = require("log4js").getLogger("app.js");
 var Promise = require("bluebird");
-var config = require("config");
+var config = require("./config");
 var casper = require("./lib/server");
 var db = require('mongo-bluebird').create(config.scrapecache.db);
 var Server = function() {
 	this.promise = casper.setUp();
 };
+
+/**
+ *
+ * @param pages  {
+ *                  "url":"",
+ *                  "script":"script file , absolute path"
+ *                  }
+ * @param type    the function name will be called from the script file
+ * @param expiration
+ * @returns {*|ng.IPromise<TResult>}
+ */
 Server.prototype.scrape = function(pages, type, expiration) {
+
 	return this.promise.then(function() {
 		if (!Array.isArray(pages)) {
 			pages = [pages];

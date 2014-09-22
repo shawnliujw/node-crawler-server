@@ -1,13 +1,19 @@
 {
   "name": "node-crawler-server",
   "description": "casperjs server for scraping, with it you can simple write the script file , it can be executed in the browser and response you the result you expect. it can  load ajax content  as you are using browser.",
-  "version": "0.0.6",
-  "main": "./app.js",
+  "version": "0.0.8",
+  "main": "./main.js",
   "author": {
     "name": "shawn",
     "email": "shawn.liu@dotter.me"
   },
-  "keywords": ["casperjs","phantomjs","crawler","mongo","job queue"],
+  "keywords": [
+    "casperjs",
+    "phantomjs",
+    "crawler",
+    "mongo",
+    "job queue"
+  ],
   "licenses": {
     "type": "MIT"
   },
@@ -23,6 +29,7 @@
     "bluebird": "^2.3.2",
     "config": "^1.2.0",
     "cron": "^1.0.4",
+    "lodash": "^2.4.1",
     "log4js": "^0.6.21",
     "mongo-bluebird": "0.0.4",
     "request": "^2.44.0"
