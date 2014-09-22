@@ -1,7 +1,7 @@
 {
   "name": "node-crawler-server",
   "description": "casperjs server for scraping, with it you can simple write the script file , it can be executed in the browser and response you the result you expect. it can  load ajax content  as you are using browser.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./app.js",
   "author": {
     "name": "shawn",
